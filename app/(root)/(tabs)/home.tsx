@@ -207,6 +207,7 @@ const Home = () => {
               <Text>Дружелюбний 57%</Text>
             </View>
           </View>*/}
+
  
         <View className="mt-5">
           <View className="flex-row items-center">

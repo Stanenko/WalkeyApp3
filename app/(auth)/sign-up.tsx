@@ -7,6 +7,7 @@ import InputField from "@/components/InputField";
 import { fetchAPI } from "@/lib/fetch";
 import ModalDropdown from "react-native-modal-dropdown";
 
+
 const SignUp = () => {
     const { isLoaded, signUp, setActive } = useSignUp();
     const router = useRouter();
@@ -430,6 +431,43 @@ const SignUp = () => {
                         </Text>
                         <View className="p-5"></View>
                         {renderDatePicker()}
+                    </View>
+                )}
+                {step === 7 && (
+                    <View className="p-5">
+                        <Text className="text-2xl text-black font-JakartaSemiBold">
+                            Покажіть вашого песика {form.name}
+                        </Text>
+                        <Text className="text-neutral-400 mt-2">
+                            Це фото будуть бачити інші песики. Ви зможете будь-коли його змінити.
+                        </Text>
+
+                        <View className="flex-row justify-around mt-10">
+                            <TouchableOpacity
+                                onPress={takePhoto}
+                                className="p-5 border rounded-lg flex items-center justify-center"
+                                style={{ borderColor: '#FF6C22', backgroundColor: '#FFE5D8' }}
+                            >
+                                <icons.CameraIcon width={30} height={30} color="#FF6C22" />
+                                <Text className="mt-2 text-[#FF6C22]">Зробити фото</Text>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity
+                                onPress={pickImage}
+                                className="p-5 border rounded-lg flex items-center justify-center"
+                                style={{ borderColor: '#D3D3D3', backgroundColor: '#F5F5F5' }}
+                            >
+                                <icons.GalleryIcon width={30} height={30} color="#D3D3D3" />
+                                <Text className="mt-2 text-[#D3D3D3]">Вибрати фото</Text>
+                            </TouchableOpacity>
+                        </View>
+
+                        {form.image && (
+                            <View className="mt-10">
+                                <Text className="text-lg">Вибране фото:</Text>
+                                <Image source={{ uri: form.image }} style={{ width: 200, height: 200 }} />
+                            </View>
+                        )}
                     </View>
                 )}
             </ScrollView>
